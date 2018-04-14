@@ -5,26 +5,31 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: ''
+      formValue: ''
     };
   }
 
   handleChange(e) {
-    this.setState({userId: e.target.value});
+    this.setState({formValue: e.target.value});
   }
 
   handleSubmit(e) {
+    const { formValue } = this.state;
+    const { loginCB } = this.props;
+
     e.preventDefault();
-    console.log('logging in...', this.state.userId);
+    loginCB(formValue);
   }
 
   render() {
+    const { formValue } = this.state;
+
     return (
       <div className="login-container">
         <form onSubmit={e => this.handleSubmit(e)}>
           <label>User Id:</label>
           {/* TODO: add validation for this input and error messaging */}
-          <input type="text" value={this.state.userId} onChange={e => this.handleChange(e)}></input>
+          <input type="text" value={formValue} onChange={e => this.handleChange(e)}></input>
           <button type="submit">
             Login
           </button>
