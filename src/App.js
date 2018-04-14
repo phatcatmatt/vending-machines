@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Login from './components/Login'
+import VendingMachineList from './components/VendingMachineList'
 import './App.css';
 
 class App extends Component {
@@ -27,9 +28,9 @@ class App extends Component {
         
         {/* show only if user is "logged in" */}
         {userId &&
-          <div>
-            logged in!
-          </div>
+          <VendingMachineList 
+            userId={userId}
+          />
         }
       </div>
     );
