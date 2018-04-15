@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import VendingMachineCard from './VendingMachineCard'
 import config from '../config'
 import axios from 'axios';
 
@@ -39,7 +40,17 @@ class VendingMachineList extends Component {
         {!isLoaded ?
           <p>loading...</p>
         :
-          vendingMachines.map(v => <div key={v.id}>{v.id}</div>)
+          <ul>
+            {vendingMachines.map(v => {
+              return (
+                <VendingMachineCard 
+                  key={v.id} 
+                  {...v}
+                />
+              )
+            })
+            }
+          </ul>
         }
       </div>
     )
