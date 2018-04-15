@@ -8,8 +8,8 @@ class VendingMachineCard extends Component {
     return (
       <li className="vending-machine-card">
         <h4>vending machine - {id}</h4>
-        <p>{attributes.latitude}</p>
-        <p>{attributes.longitude}</p>
+        <p>Lat: {attributes.latitude}</p>
+        <p>Lon: {attributes.longitude}</p>
       </li>
     )
   }
