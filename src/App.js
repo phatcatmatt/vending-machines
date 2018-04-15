@@ -11,7 +11,7 @@ class App extends Component {
     };
   }
 
-  //TODO: move login to a user service
+  //TODO: move login to a user service and store userId on the window or something
   loginCB = (userId) => {
     this.setState({userId});
   }

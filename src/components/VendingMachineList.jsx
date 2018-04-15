@@ -34,23 +34,35 @@ class VendingMachineList extends Component {
 
   render() {
     const { isLoaded, vendingMachines } = this.state;
+    const { userId } = this.props;
 
-    return (
-      <div>
-        {!isLoaded ?
-          <p>loading...</p>
-        :
+    const renderVendingMachines = () => {
+      if (vendingMachines.length === 0) {
+        return <p>add a vending machine to get started</p>
+      } else {
+        return (
           <ul>
             {vendingMachines.map(v => {
               return (
                 <VendingMachineCard 
                   key={v.id} 
+                  userId={userId}
                   {...v}
                 />
               )
             })
             }
           </ul>
+        )
+      }
+    }
+
+    return (
+      <div>
+        {!isLoaded ?
+          <p>loading...</p>
+        :
+          renderVendingMachines()
         }
       </div>
     )
