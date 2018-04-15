@@ -21,10 +21,15 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Login 
-          userId={userId}
-          loginCB={this.loginCB}
-        />
+        {!userId &&
+          <div>
+            {/* TODO: make this a real login and not just an ID */}
+            <Login 
+              loginCB={this.loginCB}
+            />
+            <p>please log in to get started</p>
+          </div>
+        }
         
         {/* show only if user is "logged in" */}
         {userId &&

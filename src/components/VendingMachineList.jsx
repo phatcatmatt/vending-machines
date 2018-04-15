@@ -3,26 +3,44 @@ import config from '../config'
 import axios from 'axios';
 
 class VendingMachineList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoaded: false,
+      vendingMachines: []
+    };
+  }
 
   componentDidMount() {
     const { userId } = this.props;
 
-    //TODO: add loading icon while data fetches
     axios.get(`${config.baseURL}/${userId}/vending_machines`)
-      .then(function (response) {
-        console.log(response);
+      .then(res => {
+        this.setState({
+          isLoaded: true,
+          vendingMachines: res.data.data
+        })
+
       })
-      .catch(function (error) {
+      .catch(err => {
+        this.setState({
+          isLoaded: true
+        })
         //TODO: show users an error message
-        console.log(error);
+        console.log(err);
       })
   }
 
   render() {
+    const { isLoaded, vendingMachines } = this.state;
 
     return (
       <div>
-        your vending machines
+        {!isLoaded ?
+          <p>loading...</p>
+        :
+          vendingMachines.map(v => <div key={v.id}>{v.id}</div>)
+        }
       </div>
     )
   }
