@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import VendingMachineCard from './VendingMachineCard'
-import config from '../config'
-import axios from 'axios';
+import API from '../api';
 
 class VendingMachineList extends Component {
   constructor(props) {
@@ -14,22 +13,31 @@ class VendingMachineList extends Component {
 
   componentDidMount() {
     const { userId } = this.props;
-
-    axios.get(`${config.baseURL}/${userId}/vending_machines`)
-      .then(res => {
-        this.setState({
-          isLoaded: true,
-          vendingMachines: res.data.data
-        })
-
+    this.getMachines(userId);
+  }
+  
+  async getMachines(userId) {
+    try {
+      const res = await API.getAllVendingMachines(userId)
+      const vendingMachines = res.data.data;
+      this.setState({
+        isLoaded: true,
+        vendingMachines
       })
-      .catch(err => {
-        this.setState({
-          isLoaded: true
-        })
-        //TODO: show users an error message
-        console.log(err);
-      })
+    } catch (err) {
+      //TODO: add real error handling
+      console.warn('Could not load vending machines!', err);
+    }
+  }
+
+  async deleteVendingMachine(id, userId) {
+    try {
+      await API.deleteVendingMachine(id, userId)
+      this.getMachines(userId)
+    } catch (err) {
+      //TODO: add real error handling
+      console.warn('Could not delete vending machine!', err);
+    }
   }
 
   render() {
@@ -41,18 +49,22 @@ class VendingMachineList extends Component {
         return <p>add a vending machine to get started</p>
       } else {
         return (
-          <ul>
-            {vendingMachines.map(v => {
-              return (
-                <VendingMachineCard 
-                  key={v.id} 
-                  userId={userId}
-                  {...v}
-                />
-              )
-            })
-            }
-          </ul>
+          <div>
+            <h4>your vending machines</h4>
+            <ul>
+              {vendingMachines.map(v => {
+                return (
+                  <VendingMachineCard 
+                    key={v.id} 
+                    deleteCB={() => this.deleteVendingMachine(v.id, userId)}
+                    userId={userId}
+                    {...v}
+                  />
+                )
+              })
+              }
+            </ul>
+          </div>
         )
       }
     }
