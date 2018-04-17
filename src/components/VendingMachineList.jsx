@@ -44,40 +44,30 @@ class VendingMachineList extends Component {
     const { isLoaded, vendingMachines } = this.state;
     const { userId } = this.props;
 
-    const renderVendingMachines = () => {
-      if (vendingMachines.length === 0) {
-        return <p>add a vending machine to get started</p>
-      } else {
-        return (
-          <div>
-            <h4>your vending machines</h4>
-            <ul>
-              {vendingMachines.map(v => {
-                return (
-                  <VendingMachineCard 
-                    key={v.id} 
-                    deleteCB={() => this.deleteVendingMachine(v.id, userId)}
-                    userId={userId}
-                    {...v}
-                  />
-                )
-              })
-              }
-            </ul>
-          </div>
-        )
-      }
-    }
-
-    return (
-      <div>
-        {!isLoaded ?
-          <p>loading...</p>
-        :
-          renderVendingMachines()
-        }
-      </div>
-    )
+    if (!isLoaded) {
+      return <p>Loading...</p>
+    } else if (vendingMachines.length === 0) {
+      return <p>add a vending machine to get started</p>
+    } else {
+      return (
+        <div>
+          <h4>your vending machines</h4>
+          <ul>
+            {vendingMachines.map(v => {
+              return (
+                <VendingMachineCard 
+                  key={v.id} 
+                  deleteCB={() => this.deleteVendingMachine(v.id, userId)}
+                  userId={userId}
+                  {...v}
+                />
+              )
+            })
+            }
+          </ul>
+        </div>
+      ) 
+    }   
   }
 }
 
