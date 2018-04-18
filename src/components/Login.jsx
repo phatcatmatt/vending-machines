@@ -34,6 +34,7 @@ class Login extends Component {
             Login
           </button>
         </form>
+        <p>please log in</p>
       </div>
     );
   }

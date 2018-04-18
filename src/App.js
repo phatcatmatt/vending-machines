@@ -18,27 +18,21 @@ class App extends Component {
 
   render() {
     const { userId } = this.state;
-
+  
     return (
       <div className="App">
-        {!userId &&
-          <div>
-            {/* TODO: make this a real login and not just an ID */}
-            <Login 
-              loginCB={this.loginCB}
-            />
-            <p>please log in to get started</p>
-          </div>
-        }
-        
-        {/* show only if user is "logged in" */}
-        {userId &&
-          <VendingMachineList 
+        {!userId ?
+          /* TODO: make this a real login and not just an ID */
+          <Login 
+            loginCB={this.loginCB}
+          />
+        :
+          <VendingMachineList
             userId={userId}
           />
         }
       </div>
-    );
+    )
   }
 }
 
