@@ -1,4 +1,28 @@
 .vending-machine-card {
-  border: 1px solid lightgray;
-  max-width: 500px;
+  border: 1px solid #dfdfdf;
+  width: 250px;
+  padding: 30px;
+  margin: 0 12px 12px 12px;
+  box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
+  transition: all .3s ease;
+}
+
+.vending-machine-card:hover {
+  box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.2);
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  margin-bottom: 12px;
+}
+
+.header-row h1 {
+  margin: 0;
+}
+
+.machine-attributes {
+  display: flex;
+  justify-content: flex-start;
 }
