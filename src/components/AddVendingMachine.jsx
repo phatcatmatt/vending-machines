@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import API from '../api';
 import './AddVendingMachine.css';
 
 class AddVendingMachine extends Component {
@@ -26,20 +25,16 @@ class AddVendingMachine extends Component {
   }
 
   async handleSubmit(e) {
-    const { userId } = this.props;
+    const { addCB } = this.props;
     const { lat, lon } = this.state;
     e.preventDefault();
-    try { 
-      await API.saveVendingMachine({
-        userId,
-        lat,
-        lon
-      })
-    } catch (err) {
-      //TODO: add real error handling
-      console.warn('Could not save vending machine!', err);
-    }
-
+    
+    addCB({lat, lon});
+    this.setState({
+      isOpen: false,
+      lat: '',
+      lon: ''
+    })
   }
 
   render() {

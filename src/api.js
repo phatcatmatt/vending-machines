@@ -21,8 +21,8 @@ const API = {
     }
   },
 
-  async saveVendingMachine(args) {
-    const { userId, lat, lon } = args;
+  async saveVendingMachine(userId, machineAttributes) {
+    const { lat, lon } = machineAttributes;
     const payload = {
       "vending_machine": {
         "longitude": lon,

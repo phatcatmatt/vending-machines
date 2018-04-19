@@ -4,15 +4,15 @@ import './VendingMachineCard.css';
 class VendingMachineCard extends Component {
 
   render() {
-    const { id, attributes, deleteCB, userId } = this.props;
+    const { id: machineId, attributes, deleteCB } = this.props;
     return (
       <li className="vending-machine-card">
-        <h4>vending machine - {id}</h4>
+        <h4>vending machine - {machineId}</h4>
         <p>Lat: {attributes.latitude}</p>
         <p>Lon: {attributes.longitude}</p>
         <span
           className="icon" 
-          onClick={() => deleteCB(id, userId)}>
+          onClick={() => deleteCB(machineId)}>
           <i className="material-icons">delete</i>
         </span>
       </li>
