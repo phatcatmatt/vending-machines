@@ -26,15 +26,28 @@ class Login extends Component {
 
     return (
       <div className="login-container">
-        <form onSubmit={e => this.handleSubmit(e)}>
-          <label>User Id:</label>
-          {/* TODO: add validation for this input and error messaging */}
-          <input type="text" value={formValue} onChange={e => this.handleChange(e)}></input>
-          <button type="submit">
-            Login
-          </button>
-        </form>
-        <p>please log in</p>
+        <h1>please log in</h1>
+          <form 
+            className="login-form"
+            onSubmit={e => this.handleSubmit(e)}>
+            <div>
+              <label>User Id: </label>
+              {/* TODO: add validation for this input and error messaging */}
+              <input 
+                type="text"
+                value={formValue}
+                onChange={e => this.handleChange(e)}
+              >
+              </input>
+            </div>
+            <div>
+              <button 
+                className="button"
+                type="submit">
+                Login
+              </button>
+            </div>
+          </form>
       </div>
     );
   }

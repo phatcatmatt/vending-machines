@@ -1,8 +1,9 @@
 body {
+  background-color: #eeeeee;
+  color: #444444;
+  font-family: 'Nunito', sans-serif;
   margin: 0;
   padding: 0;
-  font-family: 'Nunito', sans-serif;
-  color: #444444;
 }
 
 li {
@@ -15,4 +16,18 @@ li {
 
 .icon:hover {
   color: #666666
+}
+
+.button {
+  background-color: rgb(0, 181, 228);
+  border: none;
+  color: #FFF;
+  font-size: 18px;
+  padding: 6px;
+  width: 75px;
+}
+
+.button:hover {
+  background-color: rgba(0, 181, 228, .8);
+  cursor: pointer;
 }

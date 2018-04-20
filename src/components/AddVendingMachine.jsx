@@ -41,39 +41,51 @@ class AddVendingMachine extends Component {
     const { isOpen, lat, lon } = this.state;
 
     return (
-      <div>
-        <span
-          className="icon"
-          onClick={() => this.toggleIsOpen()}
-        >
-          <i className="material-icons">add_circle</i>
-        </span>
-        <div>
+      <div className="add-machine-container">
+        <div className="add-machine-header">
+          <span
+            className="icon"
+            onClick={() => this.toggleIsOpen()}
+          >
+            <i className="large material-icons">add_circle</i>
+          </span>
+        </div>
+        <div className="add-machine-card-container">
           {isOpen &&
             <div className="add-machine-card">
               <form onSubmit={e => this.handleSubmit(e)}>
-                <input 
-                  min="-90"
-                  max="90"
-                  type="number"
-                  value={lat}
-                  onChange={e => this.handleLatChange(e)}
-                  placeholder="lat"
-                  required
-                />
-                <input 
-                  min="-180"
-                  max="180"
-                  type="number"
-                  value={lon}
-                  onChange={e => this.handleLonChange(e)}
-                  placeholder="lon"
-                  required
-                />
-                <span className="validity"></span>
-                <button type="submit">
-                  Save
-                </button>
+                <h1>new vending machine</h1>
+                <div className="machine-card-footer">
+                  <div className="add-machine-attributes">
+                    <input 
+                      min="-90"
+                      max="90"
+                      type="number"
+                      value={lat}
+                      onChange={e => this.handleLatChange(e)}
+                      placeholder="lat"
+                      required
+                    />
+                    &nbsp;-&nbsp;
+                    <input 
+                      min="-180"
+                      max="180"
+                      type="number"
+                      value={lon}
+                      onChange={e => this.handleLonChange(e)}
+                      placeholder="lon"
+                      required
+                    />
+                  </div>
+                  <span className="validity"></span>
+                  <div className="add-machine-button-container">
+                    <button
+                      className="button" 
+                      type="submit">
+                        save
+                    </button>
+                  </div>
+                </div>
               </form>
             </div>
           }

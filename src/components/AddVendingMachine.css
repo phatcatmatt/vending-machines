@@ -1,3 +1,53 @@
+.add-machine-container {
+  margin-bottom: 12px;
+}
+
+.add-machine-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+i.large{
+  font-size: 36px;
+}
+
+.add-machine-card-container {
+  display: flex;
+  justify-content: center;
+}
+
 .add-machine-card {
-  border: 1px solid lightgray;
+  background-color: #FFF;
+  box-shadow: 6px 8px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+  max-width: 300px;
+  padding: 30px;
+  transition: all .3s ease;
+  width: 60vw;
+}
+
+.add-machine-card:hover {
+  box-shadow: 6px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.add-machine-card h1 {
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.machine-card-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-machine-attributes {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.add-machine-button-container {
+  display: flex;
+  justify-content: flex-end;
 }

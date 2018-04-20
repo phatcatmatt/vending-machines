@@ -30,7 +30,6 @@ class VendingMachineList extends Component {
     } else {
       return (
         <div>
-          <h4>your vending machines</h4>
           <ul>
             {vendingMachines.map(v => {
               return (
