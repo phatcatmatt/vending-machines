@@ -1,4 +1,5 @@
 # vending-machines
+A simple CRUD proof-of-concept
 
 ![app demo](https://media.giphy.com/media/1qj3GACSVlE9L07Uzp/giphy.gif)
 
